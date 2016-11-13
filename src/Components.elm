@@ -12,7 +12,7 @@ navbar =
             [ text "&#9776;    " ]
         , div [ class "collapse navbar-toggleable-xs", id "exCollapsingNavbar2" ]
             [ a [ class "navbar-brand", href "#" ]
-                [ text "Navbar" ]
+                [ text "Scupa" ]
             , ul [ class "nav navbar-nav" ]
                 [ li [ class "nav-item" ]
                     [ a [ class "nav-link", href "about.html" ]
