@@ -1,7 +1,15 @@
-module Update exposing (..)
+module State exposing (..)
 
-import Types exposing (Model, Msg(..))
+import Routing
 import Home.State
+import Types exposing (Model, Msg(..))
+
+
+initialModel : Routing.Route -> Model
+initialModel route =
+    { route = route
+    , home = Home.State.initialModel
+    }
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )

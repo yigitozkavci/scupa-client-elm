@@ -2,9 +2,8 @@ module Main exposing (..)
 
 import Html.App
 import Types exposing (Model, Msg(..))
-import Models exposing (initialModel)
+import State exposing (initialModel, update)
 import View exposing (view)
-import Update exposing (update)
 import Routing exposing (Route)
 import Navigation
 
