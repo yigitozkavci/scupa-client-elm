@@ -2,13 +2,8 @@ module Home.Components exposing (..)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
-import Html.Events exposing (onInput, onClick)
+import Html.Events exposing (onInput, onSubmit)
 import Home.Types exposing (Model, Msg(..))
-
-
-loginAction : Msg
-loginAction =
-    SendLogin
 
 
 loginForm : Model -> Html Msg
@@ -17,7 +12,7 @@ loginForm model =
         [ div [ class "wrapper" ]
             [ div [ class "signup-form-wrapper" ]
                 [ div [] [ text model.email ]
-                , Html.form [ action "", class "form-signup", method "post" ]
+                , Html.form [ action "", class "form-signup", method "post", onSubmit SendLogin ]
                     [ h3 [ class "form-signup-heading" ]
                         [ text "Welcome! Please Sign Up" ]
                     , hr [ class "colorgraph" ]
@@ -29,7 +24,7 @@ loginForm model =
                     , text ""
                     , input [ class "form-control", name "Password", placeholder "Password", attribute "required" "", type' "password", onInput Password ]
                         []
-                    , button [ class "btn btn-lg btn-primary btn-block", name "Submit", type' "Submit", value "Login", onClick loginAction ]
+                    , button [ class "btn btn-lg btn-primary btn-block", name "Submit", type' "Submit", value "Login" ]
                         [ text "Login" ]
                     ]
                 ]

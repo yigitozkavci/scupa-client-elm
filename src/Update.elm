@@ -8,7 +8,11 @@ update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
         HomeEvent homeMsg ->
-            ( { model | home = Home.State.update homeMsg model.home }, Cmd.none )
+            let
+                ( home, cmd ) =
+                    Home.State.update homeMsg model.home
+            in
+                ( { model | home = home }, Cmd.map HomeEvent cmd )
 
         NoMsg ->
             ( model, Cmd.none )

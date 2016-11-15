@@ -4,6 +4,8 @@
 
 module Home.Types exposing (Model, Msg(..))
 
+import Jwt exposing (JwtError)
+
 
 type alias Model =
     { email : String
@@ -15,3 +17,5 @@ type Msg
     = Email String
     | Password String
     | SendLogin
+    | LoginFail JwtError
+    | LoginSuccess String

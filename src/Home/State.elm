@@ -1,6 +1,10 @@
 module Home.State exposing (..)
 
 import Home.Types exposing (..)
+import Jwt
+import Json.Encode as E
+import Json.Decode
+import Task
 
 
 initialModel : Model
@@ -10,19 +14,51 @@ initialModel =
     }
 
 
-auth : Model -> Model
+tokenStringDecoder : Json.Decode.Decoder String
+tokenStringDecoder =
+    Json.Decode.string
+
+
+baseUrl : String
+baseUrl =
+    "http://localhost:3000"
+
+
+loginUrl : String
+loginUrl =
+    baseUrl ++ "/auth_user"
+
+
+auth : Model -> Cmd Msg
 auth model =
-    Debug.log "Model" model
+    let
+        credentials =
+            E.object
+                [ ( "email", E.string model.email )
+                , ( "password", E.string model.password )
+                ]
+                |> E.encode 0
+    in
+        Task.perform
+            LoginFail
+            LoginSuccess
+            (Jwt.authenticate tokenStringDecoder loginUrl credentials)
 
 
-update : Msg -> Model -> Model
+update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
         Email email ->
-            { model | email = email }
+            ( { model | email = email }, Cmd.none )
 
         Password password ->
-            { model | password = password }
+            ( { model | password = password }, Cmd.none )
 
         SendLogin ->
-            auth model
+            ( model, auth model )
+
+        LoginFail _ ->
+            ( model, Cmd.none )
+
+        LoginSuccess _ ->
+            ( model, Cmd.none )
