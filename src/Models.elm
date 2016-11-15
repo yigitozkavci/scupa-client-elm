@@ -1,10 +1,12 @@
 module Models exposing (..)
 
+import Routing
+
 
 type alias Model =
-    {}
+    { route : Routing.Route }
 
 
-initialModel : Model
-initialModel =
-    {}
+initialModel : Routing.Route -> Model
+initialModel route =
+    { route = route }
