@@ -1,9 +1,14 @@
 module Update exposing (..)
 
-import Messages exposing (Msg(..))
-import Models exposing (Model)
+import Types exposing (Model, Msg(..))
+import Home.State
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
-    ( model, Cmd.none )
+    case msg of
+        HomeEvent homeMsg ->
+            ( { model | home = Home.State.update homeMsg model.home }, Cmd.none )
+
+        NoMsg ->
+            ( model, Cmd.none )

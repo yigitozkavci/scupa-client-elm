@@ -7,7 +7,7 @@ import UrlParser exposing (..)
 
 type Route
     = HomeRoute
-    | LoginRoute
+    | AppRoute
     | NotFoundRoute
 
 
@@ -15,7 +15,7 @@ matchers : Parser (Route -> a) a
 matchers =
     oneOf
         [ format HomeRoute (s "")
-        , format LoginRoute (s "login")
+        , format AppRoute (s "app")
         ]
 
 

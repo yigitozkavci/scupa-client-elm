@@ -2,21 +2,22 @@ module View exposing (..)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
-import Models exposing (Model)
 import Home.View
-import Messages exposing (Msg(..))
+import Types exposing (Model, Msg(..))
 import Html.App
 import Components
 import Routing exposing (..)
+import Home.State
+import Home.Types
 
 
 routedPage : Model -> Html Msg
 routedPage model =
     case model.route of
         HomeRoute ->
-            Html.App.map HomeMsg (Home.View.view model)
+            Html.App.map (\action -> HomeEvent action) (Home.View.view Home.State.initialModel)
 
-        LoginRoute ->
+        AppRoute ->
             div [ class "wrapper" ] [ text "whoa!" ]
 
         NotFoundRoute ->

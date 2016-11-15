@@ -2,7 +2,7 @@ module Components exposing (..)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
-import Messages exposing (Msg(..))
+import Types exposing (Msg(..))
 
 
 navbar : Html Msg
@@ -15,12 +15,8 @@ navbar =
                 [ text "Scupa" ]
             , ul [ class "nav navbar-nav" ]
                 [ li [ class "nav-item" ]
-                    [ a [ class "nav-link", href "about.html" ]
-                        [ text "About" ]
-                    ]
-                , li [ class "nav-item" ]
-                    [ a [ class "nav-link", href "/#login" ]
-                        [ text "Login" ]
+                    [ a [ class "nav-link", href "/#app" ]
+                        [ text "App" ]
                     ]
                 , li [ class "nav-item" ]
                     [ a [ class "nav-link", href "contact.html" ]

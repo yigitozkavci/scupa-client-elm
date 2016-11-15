@@ -1,12 +1,12 @@
 module Models exposing (..)
 
 import Routing
-
-
-type alias Model =
-    { route : Routing.Route }
+import Types exposing (Model)
+import Home.State
 
 
 initialModel : Routing.Route -> Model
 initialModel route =
-    { route = route }
+    { route = route
+    , home = Home.State.initialModel
+    }

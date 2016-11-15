@@ -1,8 +1,8 @@
 module Main exposing (..)
 
 import Html.App
-import Messages exposing (Msg(..))
-import Models exposing (Model, initialModel)
+import Types exposing (Model, Msg(..))
+import Models exposing (initialModel)
 import View exposing (view)
 import Update exposing (update)
 import Routing exposing (Route)
