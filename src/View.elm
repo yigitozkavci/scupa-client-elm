@@ -15,7 +15,7 @@ routedPage : Model -> Html Msg
 routedPage model =
     case model.route of
         HomeRoute ->
-            Html.App.map (\action -> HomeEvent action) (Home.View.view Home.State.initialModel)
+            Html.App.map (\action -> HomeEvent action) (Home.View.view model.home)
 
         AppRoute ->
             div [ class "wrapper" ] [ text "whoa!" ]
@@ -28,6 +28,7 @@ view : Model -> Html Msg
 view model =
     div []
         [ Components.navbar
+        , div [ style [ ( "margin-top", "100px" ) ] ] [ text (toString model.position.x) ]
         , div [ class "content-wrapper" ]
             [ routedPage model
             ]

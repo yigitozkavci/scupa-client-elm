@@ -6,6 +6,7 @@ import State exposing (initialModel, update)
 import View exposing (view)
 import Routing exposing (Route)
 import Navigation
+import Mouse
 
 
 init : Result String Route -> ( Model, Cmd Msg )
@@ -19,7 +20,7 @@ init result =
 
 subscriptions : Model -> Sub Msg
 subscriptions model =
-    Sub.none
+    Mouse.moves MouseEvent
 
 
 urlUpdate : Result String Route -> Model -> ( Model, Cmd Msg )
