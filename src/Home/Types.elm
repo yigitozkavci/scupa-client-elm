@@ -5,11 +5,13 @@
 module Home.Types exposing (Model, Msg(..))
 
 import Jwt exposing (JwtError)
+import Mouse
 
 
 type alias Model =
     { email : String
     , password : String
+    , position : Mouse.Position
     }
 
 
@@ -19,3 +21,4 @@ type Msg
     | SendLogin
     | LoginFail JwtError
     | LoginSuccess String
+    | MouseClickEvent Mouse.Position

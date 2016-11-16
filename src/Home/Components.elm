@@ -11,7 +11,7 @@ loginForm model =
     div [ class "container" ]
         [ div [ class "wrapper" ]
             [ div [ class "signup-form-wrapper" ]
-                [ div [] [ text model.email ]
+                [ div [] [ text (toString model.position.x) ]
                 , Html.form [ action "", class "form-signup", method "post", onSubmit SendLogin ]
                     [ h3 [ class "form-signup-heading" ]
                         [ text "Welcome! Please Sign Up" ]

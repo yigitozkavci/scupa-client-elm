@@ -28,7 +28,6 @@ view : Model -> Html Msg
 view model =
     div []
         [ Components.navbar
-        , div [ style [ ( "margin-top", "100px" ) ] ] [ text (toString model.position.x) ]
         , div [ class "content-wrapper" ]
             [ routedPage model
             ]

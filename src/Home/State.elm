@@ -5,12 +5,14 @@ import Jwt
 import Json.Encode as E
 import Json.Decode
 import Task
+import Mouse
 
 
 initialModel : Model
 initialModel =
     { email = "base"
     , password = ""
+    , position = { x = 2, y = 3 }
     }
 
 
@@ -29,6 +31,12 @@ loginUrl =
     baseUrl ++ "/auth_user"
 
 
+subscriptions : Model -> List (Sub Msg)
+subscriptions model =
+    [ Mouse.clicks MouseClickEvent
+    ]
+
+
 auth : Model -> Cmd Msg
 auth model =
     let
@@ -43,11 +51,6 @@ auth model =
             LoginFail
             LoginSuccess
             (Jwt.authenticate tokenStringDecoder loginUrl credentials)
-
-
-subscriptions : Model -> Sub Msg
-subscriptions model =
-    Sub.none
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -67,3 +70,6 @@ update msg model =
 
         LoginSuccess _ ->
             ( model, Cmd.none )
+
+        MouseClickEvent position ->
+            ( { model | position = position }, Cmd.none )

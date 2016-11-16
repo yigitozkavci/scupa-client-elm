@@ -10,7 +10,6 @@ initialModel : Routing.Route -> Model
 initialModel route =
     { route = route
     , home = Home.State.initialModel
-    , position = { x = 0, y = 0 }
     }
 
 
@@ -26,6 +25,3 @@ update msg model =
 
         NoMsg ->
             ( model, Cmd.none )
-
-        MouseEvent mousePosition ->
-            ( { model | position = Debug.log "position" mousePosition }, Cmd.none )
