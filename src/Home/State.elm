@@ -12,7 +12,7 @@ initialModel : Model
 initialModel =
     { email = "base"
     , password = ""
-    , position = { x = 2, y = 3 }
+    , position = { x = 0, y = 0 }
     }
 
 
@@ -57,7 +57,7 @@ update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
         Email email ->
-            ( { model | email = (Debug.log "Email" email) }, Cmd.none )
+            ( { model | email = email }, Cmd.none )
 
         Password password ->
             ( { model | password = password }, Cmd.none )

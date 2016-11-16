@@ -4,6 +4,12 @@ import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onInput, onSubmit)
 import Home.Types exposing (Model, Msg(..))
+import Mouse
+
+
+debugPosition : Mouse.Position -> String
+debugPosition position =
+    "Clicked { x: " ++ (toString position.x) ++ ", y: " ++ (toString position.y) ++ " }"
 
 
 loginForm : Model -> Html Msg
@@ -11,7 +17,7 @@ loginForm model =
     div [ class "container" ]
         [ div [ class "wrapper" ]
             [ div [ class "signup-form-wrapper" ]
-                [ div [] [ text (toString model.position.x) ]
+                [ div [] [ text (debugPosition model.position) ]
                 , Html.form [ action "", class "form-signup", method "post", onSubmit SendLogin ]
                     [ h3 [ class "form-signup-heading" ]
                         [ text "Welcome! Please Sign Up" ]
